@@ -1,8 +1,8 @@
 function stopWatch(options) {
   function addMessage(message) {
-    var messageElm = document.createElement('div');
-    var now = new Date();
-    messageElm.innerText = now.getHours() + '時' + now.getMinutes() + '分' + now.getSeconds() + '秒 ' + message;
+    const messageElm = document.createElement('div');
+    const now = new Date();
+    messageElm.innerText = `${now.getHours()}時${now.getMinutes()}分${now.getSeconds()}秒${message}`;
     // @see https://books.circlearound.co.jp/step-up-javascript/errata.html#errata-class-list
     messageElm.classList.add('message');
     logElm.appendChild(messageElm);
@@ -10,19 +10,19 @@ function stopWatch(options) {
 
 
   options = options || {}; // --- [1〜]
-  var color = options.color || 'lightblue';
-  var backgroundColor = options.backgroundColor || 'black'; // --- [〜1]
-  var displayElm = document.getElementsByClassName('display')[0];
+  const color = options.color || 'lightblue';
+  const backgroundColor = options.backgroundColor || 'black'; // --- [〜1]
+  const displayElm = document.getElementsByClassName('display')[0];
   displayElm.style.color = color; // --- [2〜]
   displayElm.style.backgroundColor = backgroundColor; // --- [〜2]
 
-  var logElm = document.querySelector('.log');
-  var timer = null;
+  const logElm = document.querySelector('.log');
+  let timer = null;
 
-  var startButton = document.getElementsByClassName('startButton')[0];
+  const startButton = document.getElementsByClassName('startButton')[0];
   startButton.addEventListener('click', function() {
     if (timer === null) {
-      var seconds = 0;
+      let seconds = 0;
       timer = setInterval(function() {
         seconds++;
         displayElm.innerText = seconds;
@@ -33,7 +33,7 @@ function stopWatch(options) {
     }
   });
 
-  var stopButton = document.getElementsByClassName('stopButton')[0];
+  const stopButton = document.getElementsByClassName('stopButton')[0];
   stopButton.addEventListener('click', function() {
     if (timer !== null) {
       clearInterval(timer);
@@ -44,7 +44,7 @@ function stopWatch(options) {
   });
 }
 
-var options = { // --- [3〜]
+const options = { // --- [3〜]
   color: 'limegreen',
   backgroundColor: '#333'
 }; // --- [〜3]
